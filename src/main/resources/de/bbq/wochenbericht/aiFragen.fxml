@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.bbq.wochenbericht.AiFragenController">
+   <children>
+      <TextArea fx:id="prompt" layoutX="10.0" layoutY="14.0" prefHeight="345.0" prefWidth="380.0" promptText="Gebe eine Zussamenfassung deiner Woche ein..." />
+      <Button layoutX="273.0" layoutY="360.0" mnemonicParsing="false" onAction="#absenden" text="Mit AI generieren..." />
+   </children>
+</AnchorPane>
