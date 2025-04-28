@@ -15,7 +15,7 @@ jobs:
         distribution: 'temurin'
     - run: mvn compile
     - run: mvn package
-    - uses: actions/upload-artifact@4.6.2
+    - uses: actions/upload-artifact@v4.6.2
       with:
         name: Wochenbericht.jar
         path: ./target/WochenBericht-1.0-SNAPSHOT.jar
