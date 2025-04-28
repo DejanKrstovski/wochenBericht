@@ -13,6 +13,7 @@ jobs:
       with:
         java-version: '24'
         distribution: 'temurin'
+        cashe: maven
     - run: mvn compile
     - run: mvn package
     - uses: actions/upload-artifact@v4.6.2
@@ -27,6 +28,7 @@ jobs:
       with:
         java-version: '24'
         distribution: 'temurin'
+        cashe: maven
     - run: mvn compile
     - run: mvn package
     - uses: actions/upload-artifact@v4.6.2
