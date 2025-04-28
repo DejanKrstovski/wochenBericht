@@ -8,8 +8,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: action/checkout@4
-    - uses: actions/setup-java@4
+    - uses: action/checkout@v4
+    - uses: actions/setup-java@v4
       with:
         java-version: '24'
         distribution: 'temurin'
