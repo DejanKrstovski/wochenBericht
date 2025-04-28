@@ -17,7 +17,7 @@ jobs:
     - run: mvn package
     - uses: actions/upload-artifact@v4.6.2
       with:
-        name: Wochenbericht.jar
+        name: Wochenbericht-windows.jar
         path: ./target/WochenBericht-1.0-SNAPSHOT.jar
   build-linux:
     runs-on: ubuntu-latest
@@ -31,5 +31,5 @@ jobs:
     - run: mvn package
     - uses: actions/upload-artifact@v4.6.2
       with:
-        name: Wochenbericht.jar
+        name: Wochenbericht-linux.jar
         path: ./target/WochenBericht-1.0-SNAPSHOT.jar
