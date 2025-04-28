@@ -5,8 +5,22 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  build-windows:
     runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-java@v4
+      with:
+        java-version: '24'
+        distribution: 'temurin'
+    - run: mvn compile
+    - run: mvn package
+    - uses: actions/upload-artifact@v4.6.2
+      with:
+        name: Wochenbericht.jar
+        path: ./target/WochenBericht-1.0-SNAPSHOT.jar
+  build-linux:
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-java@v4
