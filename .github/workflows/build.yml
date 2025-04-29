@@ -40,4 +40,21 @@ jobs:
       with:
         name: Wochenbericht-Linux.deb
         path: ./wochenberichte_1.0-1_amd64.deb
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+    - uses: actions/download-artifact@v4
+      with:
+        name: Wochenbericht-Windows.exe
+    - uses: actions/download-artifact@v4
+      with:
+        name: Wochenbericht-Linux.deb
+    - id: version
+      run: echo "version=$(date + 'v%Y.%m.%d-%H%M%S')" >> "$GITHUB-OUTPUT"
+    - uses: ncipollo/release-action@v1
+      with: 
+        artifacts: "Wochenbericht-Windows.exe,Wochenbericht-Linux.deb"
+        tag: ${{ steps.version.outputs.version }}
  
