@@ -2,8 +2,8 @@ name: Build Java Project
 
 on:
   push:
-    branches: 
-    - "main"
+    branches:
+      - "main"
 
 jobs:
   build-windows:
@@ -12,42 +12,48 @@ jobs:
     - uses: actions/checkout@v4
     - uses: actions/setup-java@v4
       with:
-        java-version: '17'
+        java-version: '24'
         distribution: 'temurin'
         cache: maven
     - run: mvn compile
     - run: mvn package
     - run: dotnet tool install wix --global --version 5.0.2
     - run: wix extension add --global WixToolset.Util.wixext/5.0.2
-    - run: jpackage --input target/ 
-                    --name Wochenberichte 
-                    --main-jar WochenBericht-1.0-SNAPSHOT.jar 
-                    --main-class de.bbq.wochenberichte.Main 
-                    --type exe
-                    --dest ./output \
+    - run: |
+        jpackage ^
+          --input target/ ^
+          --name Wochenberichte ^
+          --main-jar WochenBericht-1.0-SNAPSHOT.jar ^
+          --main-class de.bbq.wochenberichte.Main ^
+          --type exe ^
+          --app-version 1.0 ^
+          --dest output
     - uses: actions/upload-artifact@v4.6.2
       with:
         name: Wochenbericht-Windows.exe
-        path: ./Wochenberichte-1.0.exe
+        path: ./output/Wochenberichte-1.0.exe
+
   build-linux:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-java@v4
       with:
-        java-version: '17'
+        java-version: '24'
         distribution: 'temurin'
         cache: maven
     - run: mvn compile
     - run: mvn package
-    - run: jpackage --input target/ 
-                    --name Wochenberichte 
-                    --main-jar WochenBericht-1.0-SNAPSHOT.jar 
-                    --main-class de.bbq.wochenberichte.Main 
-                    --type deb
-                    --dest ./output \
+    - run: |
+        jpackage \
+          --input target/ \
+          --name Wochenberichte \
+          --main-jar WochenBericht-1.0-SNAPSHOT.jar \
+          --main-class de.bbq.wochenberichte.Main \
+          --type deb \
+          --app-version 1.0 \
+          --dest output
     - uses: actions/upload-artifact@v4.6.2
       with:
         name: Wochenbericht-Linux.deb
-        path: ./wochenberichte_1.0-1_amd64.deb
- 
+        path: ./output/wochenberichte_1.0-1_amd64.deb
