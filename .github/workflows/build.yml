@@ -19,7 +19,7 @@ jobs:
     - run: mvn package
     - run: dotnet tool install wix --global --version 5.0.2
     - run: wix extension add --global WixToolset.Util.wixext/5.0.2
-    - run: jpackage --input target/ --name Wochenberichte --main-jar Wochenberichte-1.0-SNAPSHOT.jar --main-class de.bbq.wochenberichte.Main --type exe
+    - run: jpackage --win-menu --win-per-user-install --win-shortcut --win-shortcut-prompt --win-dir-chooser --input target/ --name Wochenberichte --main-jar Wochenberichte-1.0-SNAPSHOT.jar --main-class de.bbq.wochenberichte.Main --type exe
     - uses: actions/upload-artifact@v4.6.2
       with:
         name: Wochenbericht-Windows.exe
@@ -53,9 +53,8 @@ jobs:
       with:
         name: Wochenbericht-Linux.deb
     - id: version
-      run: echo "version=$(date + 'v%Y.%m.%d-%H%M%S')" >> "$GITHUB-OUTPUT"
+      run:  echo "version=$(date +'v%Y.%m.%d-%H%M%S')" >> "$GITHUB_OUTPUT"
     - uses: ncipollo/release-action@v1
-      with: 
+      with:
         artifacts: "Wochenbericht-Windows.exe,Wochenbericht-Linux.deb"
         tag: ${{ steps.version.outputs.version }}
- 
