@@ -19,7 +19,12 @@ jobs:
     - run: mvn package
     - run: dotnet tool install wix --global --version 5.0.2
     - run: wix extension add --global WixToolset.Util.wixext/5.0.2
-    - run: jpackage --input target/ --name Wochenberichte --main-jar WochenBericht-1.0-SNAPSHOT.jar --main-class de.bbq.wochenberichte.Main --type exe
+    - run: jpackage --input target/ 
+                    --name Wochenberichte 
+                    --main-jar WochenBericht-1.0-SNAPSHOT.jar 
+                    --main-class de.bbq.wochenberichte.Main 
+                    --type exe
+                    --dest ./output \
     - uses: actions/upload-artifact@v4.6.2
       with:
         name: Wochenbericht-Windows.exe
@@ -35,7 +40,12 @@ jobs:
         cache: maven
     - run: mvn compile
     - run: mvn package
-    - run: jpackage --input target/ --name Wochenberichte --main-jar WochenBericht-1.0-SNAPSHOT.jar --main-class de.bbq.wochenberichte.Main --type deb
+    - run: jpackage --input target/ 
+                    --name Wochenberichte 
+                    --main-jar WochenBericht-1.0-SNAPSHOT.jar 
+                    --main-class de.bbq.wochenberichte.Main 
+                    --type deb
+                    --dest ./output \
     - uses: actions/upload-artifact@v4.6.2
       with:
         name: Wochenbericht-Linux.deb
