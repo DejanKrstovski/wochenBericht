@@ -56,5 +56,5 @@ jobs:
       run:  echo "version=$(date +'v%Y.%m.%d-%H%M%S')" >> "$GITHUB_OUTPUT"
     - uses: ncipollo/release-action@v1
       with:
-        artifacts: "Wochenbericht-Windows.exe,Wochenbericht-Linux.deb"
+        artifacts: "*.exe,*.deb"
         tag: ${{ steps.version.outputs.version }}
