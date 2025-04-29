@@ -1,5 +1,5 @@
 
-package de.bbq.wochenbericht;
+package de.bbq.wochenberichte;
 
 
 public class Main {

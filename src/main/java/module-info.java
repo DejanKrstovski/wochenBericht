@@ -5,6 +5,6 @@ module de.bbq.wochenbericht {
     requires com.sun.xml.bind;
     requires java.base;
     
-    opens de.bbq.wochenbericht to javafx.fxml, java.xml.bind;
-    exports de.bbq.wochenbericht;
+    opens de.bbq.wochenberichte to javafx.fxml, java.xml.bind;
+    exports de.bbq.wochenberichte;
 }

@@ -1,4 +1,4 @@
-package de.bbq.wochenbericht;
+package de.bbq.wochenberichte;
 
 import java.time.LocalDate;
 import javax.xml.bind.annotation.XmlAccessType;

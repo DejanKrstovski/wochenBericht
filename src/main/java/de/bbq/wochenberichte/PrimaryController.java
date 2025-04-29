@@ -1,4 +1,4 @@
-package de.bbq.wochenbericht;
+package de.bbq.wochenberichte;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package de.bbq.wochenbericht;
+package de.bbq.wochenberichte;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
