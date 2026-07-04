@@ -1,5 +1,2 @@
 # Ignore the target directory
 /target
-
-# Ignore everything that start with .
-.*
